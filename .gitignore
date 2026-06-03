@@ -1,0 +1,4 @@
+.github/
+templates/
+Dockerfile
+.dockerignore
