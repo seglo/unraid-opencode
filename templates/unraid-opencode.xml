@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>opencode</Name>
+    <Beta>false</Beta>
+    <Category>Productivity: Tools: AI:</Category>
+    <Repository>ghcr.io/seglo/unraid-opencode:latest</Repository>
+    <Registry>https://github.com/seglo/unraid-opencode/pkgs/container/unraid-opencode</Registry>
+    <Network>bridge</Network>
+    <ExtraParams></ExtraParams>
+    <Shell>bash</Shell>
+    <GitHub>https://github.com/seglo/unraid-opencode</GitHub>
+    <Project>https://opencode.ai</Project>
+    <Overview>OpenCode is an AI-powered coding agent with a terminal UI and web interface. This container runs opencode web for browser-based remote access.&#13;&#13;This image extends the official opencode image with git, Node.js, Python, SSH, and other essentials for full MCP server and VCS support.&#13;&#13;Access the web UI at: http://[IP]:[PORT:4096]&#13;&#13;Docs: https://opencode.ai/docs/server</Overview>
+    <WebUI>http://[IP]:[PORT:4096]</WebUI>
+    <TemplateURL>https://raw.githubusercontent.com/seglo/unraid-opencode/main/templates/unraid-opencode.xml</TemplateURL>
+    <Icon>https://raw.githubusercontent.com/anomalyco/opencode/dev/packages/web/src/assets/favicon.svg</Icon>
+    <Date>2026-06-02</Date>
+    <Changes></Changes>
+
+    <!-- Port Mappings -->
+    <Config Name="Port: Web UI" Target="4096" Default="4096" Mode="tcp" Description="HTTP port for the OpenCode web interface." Type="Port" Display="always" Required="true" Mask="false"/>
+
+    <!-- Volume Mappings -->
+    <Config Name="Path: Config" Target="/root/.config/opencode" Default="/mnt/user/appdata/opencode/config" Mode="rw" Description="OpenCode configuration directory (opencode.json, agents, commands, plugins)." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: Data" Target="/root/.local/share/opencode" Default="/mnt/user/appdata/opencode/data" Mode="rw" Description="OpenCode data directory (sessions, auth, snapshots, database)." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: Workspace" Target="/workspace" Default="/mnt/user/appdata/opencode/workspace" Mode="rw" Description="Main workspace directory for your projects." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: SSH Keys" Target="/root/.ssh" Default="/mnt/user/appdata/opencode/ssh" Mode="rw" Description="SSH keys for git operations." Type="Path" Display="always" Required="false" Mask="false"/>
+    <Config Name="Path: GitConfig" Target="/root/.gitconfig" Default="/mnt/user/appdata/opencode/gitconfig" Mode="rw" Description="Git configuration file." Type="Path" Display="always" Required="false" Mask="false"/>
+
+    <!-- Separator: Server Configuration -->
+    <Config Name="--- Server Configuration ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: OPENCODE_SERVER_PASSWORD" Target="OPENCODE_SERVER_PASSWORD" Default="" Description="Password for HTTP basic auth (strongly recommended). Username defaults to 'opencode'." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: OPENCODE_SERVER_USERNAME" Target="OPENCODE_SERVER_USERNAME" Default="opencode" Description="Username for HTTP basic auth." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: TZ" Target="TZ" Default="UTC" Description="Timezone for the container." Type="Variable" Display="always" Required="false" Mask="false"/>
+
+    <!-- Separator: API Keys -->
+    <Config Name="--- API Keys ---" Target="" Default="" Mode="" Description="Provider API keys. These can also be configured in opencode.json or auth.json." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: ANTHROPIC_API_KEY" Target="ANTHROPIC_API_KEY" Default="" Description="Anthropic API key (Claude models)." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Description="OpenAI API key." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: OPENROUTER_API_KEY" Target="OPENROUTER_API_KEY" Default="" Description="OpenRouter API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+    <!-- Separator: Advanced -->
+    <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: OPENCODE_CONFIG" Target="OPENCODE_CONFIG" Default="" Description="Custom path to opencode.json config file." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: OPENCODE_CONFIG_CONTENT" Target="OPENCODE_CONFIG_CONTENT" Default="" Description="Inline JSON config content (highest precedence)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
