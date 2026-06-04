@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     nodejs \
     npm \
     python3 \
+    py3-pip \
     bash \
     curl \
     jq \
@@ -19,6 +20,20 @@ RUN apk add --no-cache \
     tree \
     tmux \
     nano
+
+# Add uv and locally installed tools to PATH
+ENV PATH="/root/.local/bin:$PATH"
+
+# Install uv for Python package management (needed for ha-mcp)
+RUN pip3 install --break-system-packages --no-cache-dir uv
+
+# Pre-install MCP server npm packages for faster startup
+RUN npm install -g \
+    gogcli-mcp-gmail \
+    mcp-google-drive
+
+# Install ha-mcp via uv
+RUN uv tool install ha-mcp
 
 WORKDIR /workspace
 EXPOSE 4096
