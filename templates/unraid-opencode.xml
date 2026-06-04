@@ -23,12 +23,6 @@
     <!-- Volume Mappings -->
     <Config Name="Path: Workspace" Target="/workspace" Default="/mnt/user/appdata/opencode/workspace" Mode="rw" Description="Main workspace directory for your projects." Type="Path" Display="always" Required="false" Mask="false"/>
 
-    <!-- Separator: Server Configuration -->
-    <Config Name="--- Server Configuration ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
-    <Config Name="Variable: OPENCODE_SERVER_PASSWORD" Target="OPENCODE_SERVER_PASSWORD" Default="" Description="Password for HTTP basic auth (strongly recommended). Username defaults to 'opencode'." Type="Variable" Display="always" Required="false" Mask="true"/>
-    <Config Name="Variable: OPENCODE_SERVER_USERNAME" Target="OPENCODE_SERVER_USERNAME" Default="opencode" Description="Username for HTTP basic auth." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-    <Config Name="Variable: TZ" Target="TZ" Default="UTC" Description="Timezone for the container." Type="Variable" Display="always" Required="false" Mask="false"/>
-
     <!-- Separator: Advanced -->
     <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: OPENCODE_CONFIG" Target="OPENCODE_CONFIG" Default="" Description="Custom path to opencode.json config file." Type="Variable" Display="advanced" Required="false" Mask="false"/>
