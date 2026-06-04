@@ -22,6 +22,8 @@
 
     <!-- Volume Mappings -->
     <Config Name="Path: Workspace" Target="/workspace" Default="/mnt/user/appdata/opencode/workspace" Mode="rw" Description="Main workspace directory for your projects." Type="Path" Display="always" Required="false" Mask="false"/>
+    <Config Name="Path: Config File" Target="/root/.config/opencode/opencode.json" Default="/mnt/user/appdata/opencode/opencode.json" Mode="rw" Description="OpenCode configuration file (opencode.json)." Type="Path" Display="always" Required="false" Mask="false"/>
+    <Config Name="Path: Auth File" Target="/root/.local/share/opencode/auth.json" Default="/mnt/user/appdata/opencode/auth.json" Mode="rw" Description="OpenCode auth file (auth.json)." Type="Path" Display="always" Required="false" Mask="false"/>
 
     <!-- Separator: Advanced -->
     <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false"/>
