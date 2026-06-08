@@ -6,6 +6,7 @@ ENV BUN_RUNTIME_TRANSPILER_CACHE_PATH=${BUN_RUNTIME_TRANSPILER_CACHE_PATH} \
     OPENCODE_DISABLE_LSP_DOWNLOAD=true
 
 RUN apk add --no-cache \
+    gcompat \
     git \
     openssh-client \
     nodejs \
